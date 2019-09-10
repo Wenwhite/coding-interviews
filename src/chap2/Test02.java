@@ -14,7 +14,7 @@ public class Test02 {
 
     public static void main(String[] args) {
         System.out.println( Singleton1.instance == Singleton1.instance );
-        System.out.println( Singleton2.instance == Singleton2.instance );
+        System.out.println( Singleton2.getInstance() == Singleton2.getInstance() );
         System.out.println( Singleton3.instance == Singleton3.instance );
         System.out.println( Singleton4.instance == Singleton4.instance );
         System.out.println( Singleton5.getInstance() == Singleton5.getInstance() );
