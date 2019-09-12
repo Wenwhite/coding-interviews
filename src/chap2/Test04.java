@@ -5,7 +5,7 @@ package chap2;
  * @Package: chap2
  * @ClassName: Test04
  * @Author: wenbai
- * @Description: 剑指offer第3题 二维数组中的查找
+ * @Description: 剑指offer第4题 二维数组中的查找
  * 在一个二维数组中，每一行都按照从左到右递增，每一列都按照从上到下递增。
  * 完成一个函数，输入这样一个二维数组和一个整数，判断数组中是否含有该整数
  * @Date: 2019/9/12 16:26
