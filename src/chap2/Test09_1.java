@@ -6,14 +6,14 @@ import java.util.Stack;
 /**
  * @ProjectName: coding-interviews
  * @Package: chap2
- * @ClassName: Test09
+ * @ClassName: Test09_1
  * @Author: wenbai
- * @Description: 剑指offer第9题 用两个栈实现队列
+ * @Description: 剑指offer第9题 1 用两个栈实现队列
  * 用两个栈实现一个队列 请实现
  * @Date: 2019/9/15 21:54
  * @Version: 1.0
  */
-public class Test09 {
+public class Test09_1 {
 
     static Stack<Integer> stack1 = new Stack<>();
     static Stack<Integer> stack2 = new Stack<>();
