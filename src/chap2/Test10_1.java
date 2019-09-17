@@ -3,14 +3,14 @@ package chap2;
 /**
  * @ProjectName: coding-interviews
  * @Package: chap2
- * @ClassName: Test10
+ * @ClassName: Test10_1
  * @Author: wenbai
  * @Description: 剑指offer第10题 1 求斐波那契数列的第n项
  * 写一个函数，输入n，求斐波那契(Fibonacci)数列的第n项
  * @Date: 2019/9/17 10:53
  * @Version: 1.0
  */
-public class Test10 {
+public class Test10_1 {
 
     /**
      * 递归解法(不推荐)
