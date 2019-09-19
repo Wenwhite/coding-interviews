@@ -39,11 +39,13 @@ public class Test11 {
     /**
      * 复杂度O(logn)【推荐】
      * 利用旋转数组的特性 类似于二分查找 前后两组递增数组 最小项为第二组数组的第一个元素
-     * 两个指针index1和index2分别指向0和length-1 判断中间的元素a的大小
-     * 若numbers[index1] < numbers[a] 则说明a项还在前一个递增数组内 此时将index1指向a 继续
-     * 若numbers[index2] > numbers[a] 则说明a项还在后一个递增数组内 此时将index2指向a 继续
+     * 两个指针index1和index2分别指向0和length-1 判断中间的元素indexMin的大小
+     * 若numbers[index1] < numbers[indexMin] 则说明indexMin项还在前一个递增数组内 此时将index1指向indexMin 继续
+     * 若numbers[index2] > numbers[indexMin] 则说明indexMin项还在后一个递增数组内 此时将index2指向indexMin 继续
      * 直到index2-index1==1时，此时index1在第一个数组最后一项 index2在第二个数组第一项
      * 最小值为numbers[index2]
+     * [需要注意的是，当index1，index2和indexMin数值相同时 无法判断indexMin到底属于前后哪一个数组，此时只能顺序查找]
+     *
      * @param numbers 数组
      * @return 数组最小值
      */
@@ -53,12 +55,17 @@ public class Test11 {
             int index1 = 0;
             int index2 = numbers.length-1;
             int indexMin = 0;
-            while ( numbers[index1] > numbers[index2] ) {
+            while ( numbers[index1] >= numbers[index2] ) {
                 if ( index2-index1 == 1 ) {
                     indexMin = index2;
                     break;
                 }
                 indexMin = (index1+index2)/2;
+
+                if ( numbers[index1] == numbers[index2] && numbers[index1] == numbers[indexMin] ) {
+                    return minInOrder( numbers, index1, index2 );
+                }
+
                 if ( numbers[index1] <= numbers[indexMin] ) {
                     index1 = indexMin;
                 }else if ( numbers[index2] >= numbers[indexMin] ) {
@@ -71,8 +78,19 @@ public class Test11 {
 
     }
 
+    private static int minInOrder(int[] numbers, int index1, int index2) {
+
+        int result = numbers[index1];
+        for (int i = index1+1; i <= index2; i++) {
+            if ( result > numbers[i] ){
+                result = numbers[i];
+            }
+        }
+        return result;
+    }
+
     public static void main(String[] args) {
-        int numbers[] = new int[]{3,4,5,1,2};
+        int numbers[] = new int[]{1,0,1,1,1};
         System.out.println(min1(numbers));
         System.out.println(min2(numbers));
     }
