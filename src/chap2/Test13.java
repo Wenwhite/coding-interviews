@@ -28,29 +28,37 @@ public class Test13 {
 
     /**
      * 回溯法类似于穷举，每进入一个格就把这个格的前后左右格能够访问的格子数加起来
-     * @param threadholdValue
-     * @param row
-     * @param col
-     * @param rows
-     * @param cols
+     * @param threadholdValue 阈值
+     * @param row 行数
+     * @param col 列数
+     * @param rows 总行数
+     * @param cols 总列数
      * @param visited
      * @return
      */
     private static int countCore(int threadholdValue, int row, int col, int rows, int cols, boolean[][] visited) {
-
+        int count = 0;
+        if ( check(threadholdValue, row, col, rows, cols, visited) ) {
+            visited[row][col] = true;
+            count = countCore(threadholdValue, row-1, col, rows, cols, visited) +
+                    countCore(threadholdValue, row+1, col, rows, cols, visited) +
+                    countCore(threadholdValue, row, col+1, rows, cols, visited) +
+                    countCore(threadholdValue, row, col+1, rows, cols, visited) + 1;
+        }
+        return count;
     }
 
     /**
      * 判断是否能够进入方格
-     * @param threadholdValue
-     * @param rows
-     * @param cols
-     * @param row
-     * @param col
+     * @param threadholdValue 阈值
+     * @param rows 总行数
+     * @param cols 总列数
+     * @param row 行数
+     * @param col 列数
      * @param visited
      * @return
      */
-    private static boolean check(int threadholdValue, int rows, int cols, int row, int col, boolean[][] visited){
+    private static boolean check(int threadholdValue, int row, int col, int rows, int cols, boolean[][] visited){
         return row >=0 && row <rows &&
                 col >=0 && col < cols &&
                 !visited[row][col] && digitSum(row)+digitSum(col) <= threadholdValue;
@@ -69,6 +77,10 @@ public class Test13 {
             number = number/10;
         }
         return result;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(moveCount(18, 40, 40));
     }
 
 }
